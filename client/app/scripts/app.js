@@ -8,8 +8,7 @@
  *
  * Main module of the application.
  */
-angular
-  .module('clientApp', [
+angular.module('clientApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -31,6 +30,14 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/pizza', {
+        templateUrl: 'views/pizza.html',
+        controller: 'PizzaCtrl',
+        controllerAs: 'pizza'
+      })
+      // .when('/error', {
+      //   templateUrl: ''
+      // })
       .otherwise({
         redirectTo: '/'
       });
