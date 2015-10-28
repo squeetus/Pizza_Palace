@@ -8,9 +8,17 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('PizzaCtrl', function () {
+  .controller('PizzaCtrl', function ($scope, ApiFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS'
     ];
+
+    var handleSuccess = function(data, status) {
+        $scope.stuff = data;
+    };
+
+    ApiFactory.test(4).success(handleSuccess);
+    //ApiFactory.test(6).success(handleSuccess);
+
   });

@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular.module('clientApp', [
+var myApp = angular.module('clientApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -42,3 +42,22 @@ angular.module('clientApp', [
         redirectTo: '/'
       });
   });
+
+  // Back-end Factory
+  myApp.factory('ApiFactory', ['$http',
+    function ($http) {
+        return {
+          test: function(id) {
+            return $http.get('/pizza/' + id);
+          },
+          getUsers: function (rowcount) {
+            var promise = $http.get('api/Users/' + rowcount).then(function(response) {
+              return response.data;
+            }, function (error) {
+            //error
+            })
+            return promise;
+          }
+        }
+      }
+    ]);
